@@ -22,7 +22,7 @@ namespace WebApi.Controllers
             var response = _userService.Authenticate(model);
 
             if (response == null)
-                return BadRequest(new { message = "Usuário ou senha incorretos" });
+                return NotFound(new { message = "Usuário não encontrado" });
 
             return Ok(response);
         }
@@ -49,6 +49,23 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<User> CreateNew([FromBody]User user)
         {
+            if (string.IsNullOrEmpty(user.FirstName))
+                ModelState.AddModelError("message", "O nome é obrigatório");
+            
+            if (string.IsNullOrEmpty(user.LastName))
+                ModelState.AddModelError("message", "O sobrenome é obrigatório");
+
+            if (string.IsNullOrEmpty(user.Username))
+                ModelState.AddModelError("message", "O usuário é obrigatório");
+            
+            if (string.IsNullOrEmpty(user.Password))
+                ModelState.AddModelError("message", "A senha é obrigatória");
+
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+                
             return _userService.CreateNew(user);
         }
 
@@ -75,10 +92,15 @@ namespace WebApi.Controllers
                 return NotFound(new { message = "Usuário não cadastrado" });
 
             if (string.IsNullOrEmpty(model.NewPassword))
-                return BadRequest(new { message = "A nova senha não pode ser vazia" });
+                ModelState.AddModelError("message", "A nova senha é obrigatória");
             
             if (!model.NewPassword.Equals(model.ConfirmNewPassword))
-                return BadRequest(new { message = "A confirmação e a nova senha devem ser iguais" });
+                ModelState.AddModelError("message", "A confirmação e a nova senha devem ser iguais");
+
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             // nova senha
             user.Password = model.NewPassword;
