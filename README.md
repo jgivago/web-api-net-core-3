@@ -99,7 +99,7 @@ Para executar a API localmente, será necessário baixar e instalar os itens aba
 
 ## Utilização da API
 
-- Importar o arquivo `web-api-aspnet-core-3.postman_collection.json` no Postman (Todos os endpoints já estão configurados/documentados)
+- Importar o arquivo `WebApi\web-api-aspnet-core-3.postman_collection.json` no Postman (Todos os endpoints já estão configurados/documentados)
     - Criar um novo usuário executando o método `Create New User` (não precisa de autenticação)
     - Autenticar o usuário criado executando o método `Authorization`
     - As demais operações com o usuário precisarão utilizar o token retornado na execução do `Authorization`
