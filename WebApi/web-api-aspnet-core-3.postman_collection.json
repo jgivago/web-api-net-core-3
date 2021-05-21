@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "17235ec8-737e-4d0f-afd8-e7468bf9299c",
+		"name": "web-api-aspnet-core-3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create New User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Lionel\",\r\n    \"lastname\": \"Messi\",\r\n    \"username\": \"lionel\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"new"
+					]
+				},
+				"description": "Cria um novo usuário para realizar a autenticação na API"
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"lionel\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"authenticate"
+					]
+				},
+				"description": "Realiza a autenticação do usuário criado na API"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYmYiOjE2MjE1NTQ0ODEsImV4cCI6MTYyMjE1OTI4MCwiaWF0IjoxNjIxNTU0NDgxfQ.tfYh7Iw1Ysmtvw7SQc6dV8xURc4IBuiHLohTxVrbH68",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Retorna todos os usuários cadastrados. Permitido apenas para usuários autenticados na API"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYmYiOjE2MjE1NTQ0ODEsImV4cCI6MTYyMjE1OTI4MCwiaWF0IjoxNjIxNTU0NDgxfQ.tfYh7Iw1Ysmtvw7SQc6dV8xURc4IBuiHLohTxVrbH68",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"1"
+					]
+				},
+				"description": "Retorna um usuário por id. Caso o usuário não exista, retorna 404. Permitido apenas para usuários autenticados na API"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYmYiOjE2MjE1NTQ0ODEsImV4cCI6MTYyMjE1OTI4MCwiaWF0IjoxNjIxNTU0NDgxfQ.tfYh7Iw1Ysmtvw7SQc6dV8xURc4IBuiHLohTxVrbH68",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"firstname\": \"Lionel (Editado)\",\r\n    \"lastname\": \"Messi\",\r\n    \"username\": \"lionel\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/edit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"edit"
+					]
+				},
+				"description": "Atualiza os dados de um usuário. Caso o usuário não exista, retorna 404. Username e Password não serão alterados. Permitido apenas para usuários autenticados na API"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYmYiOjE2MjE1NTQ0ODEsImV4cCI6MTYyMjE1OTI4MCwiaWF0IjoxNjIxNTU0NDgxfQ.tfYh7Iw1Ysmtvw7SQc6dV8xURc4IBuiHLohTxVrbH68",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"lionel\",\r\n    \"currentpassword\": \"123456\",\r\n    \"newpassword\": \"654321\",\r\n    \"confirmnewpassword\": \"654321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/updatepassword",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"updatepassword"
+					]
+				},
+				"description": "Atualiza a senha de um usuário. Permitido apenas para usuários autenticados na API"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJuYmYiOjE2MjE1NTQ0ODEsImV4cCI6MTYyMjE1OTI4MCwiaWF0IjoxNjIxNTU0NDgxfQ.tfYh7Iw1Ysmtvw7SQc6dV8xURc4IBuiHLohTxVrbH68",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"firstname\": \"Lionel\",\r\n    \"lastname\": \"Messi\",\r\n    \"username\": \"lionel\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"delete"
+					]
+				},
+				"description": "Deleta um usuário. Caso o usuário não exista, retorna 404. Permitido apenas para usuários autenticados na API"
+			},
+			"response": []
+		}
+	]
+}
