@@ -81,6 +81,7 @@ namespace WebApi.Controllers
             return editedUser;
         }
 
+        [Authorize]
         [Route("updatepassword")]
         [HttpPut]
         public IActionResult UpdatePassword([FromBody]UpdatePassword model)
