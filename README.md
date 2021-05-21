@@ -116,7 +116,7 @@ Para executar a API localmente, será necessário baixar e instalar os itens aba
 <br><br>
 
 ## Testes
-- Para executar os testes via terminal:
+- Para executar os testes via linha de comando:
     - Executar no terminal o comando `dotnet test`
     - Aguardar o resultado dos testes
     ```csharp
@@ -134,6 +134,7 @@ Para executar a API localmente, será necessário baixar e instalar os itens aba
 
     Aprovado!  - Com falha:     0, Aprovado:     1, Ignorado:     0, Total:     1, Duração: 1 ms - WebApi.Tests.dll (net5.0)
     ```
+<br>
 
 ## Alguma dúvida sobre o .NET Core?
 A documentação do .NET Core pode ser encontrada em [https://docs.microsoft.com/pt-br/dotnet/core/introduction](https://docs.microsoft.com/pt-br/dotnet/core/introduction)
