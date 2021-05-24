@@ -117,6 +117,7 @@ Para executar a API localmente, será necessário baixar e instalar os itens aba
 
 ## Testes
 - Para executar os testes via linha de comando:
+    - Executar o comando `dotnet run --project WebApi/WebApi.csproj` para levantar a API (caso ainda não tenha sido executado anteriormente)
     - Executar no terminal o comando `dotnet test`
     - Aguardar o resultado dos testes
     ```csharp

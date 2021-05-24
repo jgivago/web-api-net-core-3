@@ -16,7 +16,7 @@ namespace WebApi.Tests
     public class FeatureTests: IDisposable
     {
         private readonly ITestOutputHelper _output;
-        private readonly HttpClient _apiClient;        
+        private readonly HttpClient _apiClient;
 
         public FeatureTests(ITestOutputHelper output)
         {

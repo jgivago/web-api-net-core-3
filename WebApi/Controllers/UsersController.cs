@@ -106,7 +106,7 @@ namespace WebApi.Controllers
             // nova senha
             user.Password = model.NewPassword;
 
-            return Ok(_userService.UpdatePassword(user));  
+            return Ok(_userService.UpdatePassword(user));
         }
 
         [Authorize]
